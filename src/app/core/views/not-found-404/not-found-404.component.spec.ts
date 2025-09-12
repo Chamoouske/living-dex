@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { NotFound404 } from './not-found-404';
+import { NotFound404 } from './not-found-404.component';
 
 describe('NotFound404', () => {
   let component: NotFound404;
@@ -10,7 +10,7 @@ describe('NotFound404', () => {
     await TestBed.configureTestingModule({
       imports: [NotFound404]
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(NotFound404);
     component = fixture.componentInstance;

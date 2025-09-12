@@ -12,8 +12,8 @@ import { RouterModule } from '@angular/router';
     MatIconModule,
     RouterModule,
   ],
-  templateUrl: './not-found-404.html',
-  styleUrl: './not-found-404.sass',
+  templateUrl: './not-found-404.component.html',
+  styleUrl: './not-found-404.component.sass',
   standalone: true
 })
 export class NotFound404 {
