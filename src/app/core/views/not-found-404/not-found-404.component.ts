@@ -13,7 +13,7 @@ import { RouterModule } from '@angular/router';
     RouterModule,
   ],
   templateUrl: './not-found-404.component.html',
-  styleUrl: './not-found-404.component.sass',
+  styleUrl: './not-found-404.component.scss',
   standalone: true
 })
 export class NotFound404 {
