@@ -1,15 +1,14 @@
 .sidenav-container {
-  height: 100vh; // Ocupa a altura toda da tela
+  height: 100vh;
+}
+
+.sidenav-content {
+  display: flex;
+  flex-direction: column;
 }
 
 .sidenav {
   width: 250px;
-}
-
-.content {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
 }
 
 .mat-toolbar {
@@ -20,25 +19,25 @@
   flex: 1 1 auto;
 }
 
-main {
+.content {
   flex-grow: 1;
+  overflow: auto;
   padding: 20px;
 }
 
 .desktop-menu {
-  display: none; // Esconde o menu de desktop por padrão
+  display: none;
 }
 
 .sidenav-toggle {
-  display: block; // Mostra o botão hamburguer por padrão
+  display: block;
 }
 
-// Estilos para telas maiores (desktop)
 @media (min-width: 768px) {
   .desktop-menu {
-    display: block; // Mostra o menu de desktop
+    display: block;
   }
   .sidenav-toggle {
-    display: none; // Esconde o botão hamburguer
+    display: none;
   }
 }

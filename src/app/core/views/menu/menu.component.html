@@ -1,3 +1,33 @@
-<div>
-  <ng-content></ng-content>
-</div>
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #sidenav class="sidenav" mode="over">
+    <mat-nav-list>
+      <a *ngFor="let route of routes" mat-list-item [routerLink]="route.path" (click)="sidenav.close()">
+        {{ route.label }}
+      </a>
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <!-- Conteúdo Principal -->
+  <mat-sidenav-content class="sidenav-content">
+    <mat-toolbar color="primary">
+      <button
+        mat-icon-button
+        (click)="sidenav.toggle()"
+        class="sidenav-toggle">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <span>Living Dex</span>
+      <span class="spacer"></span>
+      <div class="desktop-menu">
+        <a *ngFor="let route of routes" mat-button [routerLink]="route.path">
+          {{ route.label }}
+        </a>
+      </div>
+    </mat-toolbar>
+
+    <main class="content">
+      <ng-content></ng-content>
+    </main>
+
+  </mat-sidenav-content>
+</mat-sidenav-container>
