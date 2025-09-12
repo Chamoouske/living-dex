@@ -1,0 +1,7 @@
+services:
+  living-dex:
+    build:
+      context: .
+    container_name: living-dex
+    ports:
+      - "4200:4200"

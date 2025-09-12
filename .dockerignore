@@ -1,0 +1,36 @@
+# Ignore all files in the node_modules directory
+node_modules/
+
+# Ignore all files in the dist directory
+dist/
+
+# Arquivos de desenvolvimento
+.git/
+.gitignore
+*.log
+*.md
+.editorconfig
+.prettierrc
+.eslintrc
+.vscode/
+.idea/
+
+# Arquivos de teste
+coverage/
+__tests__/
+*.spec.ts
+*.test.ts
+
+# Arquivos de build e cache
+.angular/
+.cache/
+.tmp/
+tmp/
+build/
+*.tsbuildinfo
+
+# Outros
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
