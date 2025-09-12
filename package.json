@@ -24,6 +24,7 @@
   },
   "private": true,
   "dependencies": {
+    "@angular/cdk": "^20.2.3",
     "@angular/common": "^20.3.0",
     "@angular/compiler": "^20.3.0",
     "@angular/core": "^20.3.0",
@@ -62,6 +63,7 @@
     "lint-staged": "^16.1.6",
     "prettier-eslint": "^16.4.2",
     "prettier-plugin-organize-imports": "^4.2.0",
+    "sass": "^1.92.1",
     "typescript": "~5.9.2"
   }
 }
