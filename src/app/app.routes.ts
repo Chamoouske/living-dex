@@ -1,10 +1,17 @@
 import { Routes } from '@angular/router';
+
 import { HomeComponent } from './features/home/home.component';
 
 export const routes: Routes = [
   {
     path: '',
-    component: HomeComponent,
+    pathMatch: 'full',
+    title: 'Home',
+    component: HomeComponent
+  },
+  {
+    path: 'boxes',
+    loadComponent: () => import('./features/box/box.component').then(m => m.BoxComponent)
   },
   {
     path: '**',

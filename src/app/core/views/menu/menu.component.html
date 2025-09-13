@@ -17,7 +17,7 @@
       <button mat-icon-button (click)="sidenav.toggle()" class="sidenav-toggle">
         <mat-icon>menu</mat-icon>
       </button>
-      <span>Living Dex</span>
+      <span [routerLink]="'/'" class="menu-title">Living Dex</span>
       <span class="spacer"></span>
       <div class="desktop-menu">
         <a *ngFor="let route of routes" mat-button [routerLink]="route.path">

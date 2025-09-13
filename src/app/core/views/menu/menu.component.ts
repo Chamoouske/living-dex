@@ -33,7 +33,7 @@ export class MenuComponent {
 
   public readonly routes: RouteLink[] = [
     { path: '/', label: 'Página Inicial' },
-    { path: '/box', label: 'Boxes' }
+    { path: '/boxes', label: 'Boxes' }
   ];
 
   public toggleTheme(): void {

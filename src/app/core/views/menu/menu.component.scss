@@ -36,7 +36,9 @@
 .theme-toggle {
   margin: 0 16px;
 }
-
+.menu-title {
+  cursor: pointer;
+}
 @media (min-width: 768px) {
   .desktop-menu {
     display: block;
