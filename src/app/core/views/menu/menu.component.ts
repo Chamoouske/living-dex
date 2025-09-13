@@ -30,7 +30,7 @@ import { ThemeService } from '../../services/theme.service';
 })
 export class MenuComponent {
   private themeService = inject(ThemeService);
-  public isDarkMode = this.themeService.atualThemeIsDarkMode();
+  public isDarkMode = this.themeService.isDarkMode;
 
   readonly routes = routes;
 

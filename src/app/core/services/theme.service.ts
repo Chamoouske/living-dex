@@ -13,6 +13,7 @@ export class ThemeService {
   private renderer: Renderer2 = inject(RendererFactory2).createRenderer(null, null);
 
   private _isDarkMode = signal<boolean>(false);
+  public readonly isDarkMode = this._isDarkMode.asReadonly();
 
   constructor() {
     this.loadInitialTheme();
@@ -21,10 +22,6 @@ export class ThemeService {
 
   public toggleTheme(): void {
     this._isDarkMode.update(isDark => !isDark);
-  }
-
-  public atualThemeIsDarkMode(): boolean {
-    return this._isDarkMode();
   }
 
   private loadInitialTheme(): void {

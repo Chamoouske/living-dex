@@ -24,8 +24,8 @@
           {{ route.label }}
         </a>
       </div>
-      <mat-slide-toggle [checked]="isDarkMode" (change)="toggleTheme()" class="theme-toggle">
-        <mat-icon>{{ isDarkMode ? 'dark_mode' : 'light_mode' }}</mat-icon>
+      <mat-slide-toggle [checked]="isDarkMode()" (change)="toggleTheme()" class="theme-toggle">
+        <mat-icon>{{ isDarkMode() ? 'dark_mode' : 'light_mode' }}</mat-icon>
       </mat-slide-toggle>
     </mat-toolbar>
 
