@@ -1,12 +1,16 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject, OnInit } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
-import { MatCardModule } from '@angular/material/card';
+import { MatFormField, MatLabel } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { RouterModule } from '@angular/router';
 
 import { PokeapiService } from '../../core/services/pokeapi.service';
+import { PokemonCardComponent } from './components/pokemon-card/pokemon-card.component';
+import { F } from '@angular/cdk/keycodes';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-box',
@@ -16,8 +20,11 @@ import { PokeapiService } from '../../core/services/pokeapi.service';
     RouterModule,
     MatProgressSpinnerModule,
     MatButtonModule,
-    MatCardModule,
-    MatIconModule
+    MatInputModule,
+    MatFormField,
+    MatLabel,
+    MatIconModule,
+    PokemonCardComponent
   ],
   templateUrl: './box.component.html',
   styleUrl: './box.component.scss'
@@ -29,27 +36,40 @@ export class BoxComponent implements OnInit {
   public isLoadingList = this.pokeapiService.isLoadingList;
   public listError = this.pokeapiService.listError;
 
+  idNationalDex = '';
+
   offset = 0;
-  private limit = 30;
+  limit = 30;
 
   ngOnInit(): void {
+    this.loadPokemonPage();
+  }
+
+  private loadPokemonPage(): void {
+    this.pokeapiService.pokemonList.set([]);
     this.pokeapiService.getPokemonList(this.offset, this.limit);
   }
 
   nextPage(): void {
     this.offset += this.limit;
-    this.pokeapiService.getPokemonList(this.offset, this.limit);
+    this.loadPokemonPage();
   }
 
   previousPage(): void {
     if (this.offset > 0) {
       this.offset -= this.limit;
-      this.pokeapiService.getPokemonList(this.offset, this.limit);
+      this.loadPokemonPage();
     }
   }
 
-  getPokemonId(url: string): string {
-    const parts = url.split('/');
-    return parts[parts.length - 2];
+  searchBox($event: any): void {
+    const value = $event.target.value;
+    if (value && value > 0) {
+      this.idNationalDex = value;
+      this.offset = Math.floor((value - 1) / this.limit) * this.limit;
+      console.log(this.offset);
+
+      this.loadPokemonPage();
+    }
   }
 }

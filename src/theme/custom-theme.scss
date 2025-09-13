@@ -53,6 +53,7 @@ $pokedex-dark-theme: mat.m2-define-dark-theme((
     --text-color: #333333;
     --primary-text-color: #{mat.m2-get-color-from-palette($pokedex-primary, 900)}; // Darker primary for text
     --card-background-color: #e6e6e6;
+    --highlight-color: #{mat.m2-get-color-from-palette($pokedex-accent, 700)};
     background-color: var(--background-color);
     color: var(--text-color); // Use the CSS variable for default text color
   }
@@ -69,6 +70,7 @@ $pokedex-dark-theme: mat.m2-define-dark-theme((
     --text-color: #eeeeee;
     --primary-text-color: #{mat.m2-get-color-from-palette($pokedex-primary, 100)}; // Lighter primary for text
     --card-background-color: #3d3d3d;
+    --highlight-color: #{mat.m2-get-color-from-palette($pokedex-accent, 700)};
     background-color: var(--background-color);
     color: var(--text-color); // Use the CSS variable for default text color
   }
