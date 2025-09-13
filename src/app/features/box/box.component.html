@@ -9,7 +9,22 @@
   <div *ngIf="listError()" class="error-message">
     <mat-icon color="warn">error</mat-icon>
     <p>{{ listError() }}</p>
-    <button mat-raised-button color="primary" (click)="loadMorePokemon()">Tentar Novamente</button>
+    <button mat-raised-button color="primary" (click)="nextPage()">Tentar Novamente</button>
+  </div>
+
+  <div *ngIf="!isLoadingList() && !listError()" class="navigation-buttons">
+    <button
+      mat-raised-button
+      color="accent"
+      (click)="previousPage()"
+      [disabled]="offset === 0 || isLoadingList()"
+    >
+      <mat-icon>arrow_back</mat-icon>
+    </button>
+
+    <button mat-raised-button color="accent" (click)="nextPage()" [disabled]="isLoadingList()">
+      <mat-icon>arrow_forward</mat-icon>
+    </button>
   </div>
 
   <div class="pokemon-grid">
@@ -18,17 +33,35 @@
         <mat-card-title>{{ pokemon.name | titlecase }}</mat-card-title>
         <mat-card-subtitle>#{{ getPokemonId(pokemon.url) }}</mat-card-subtitle>
       </mat-card-header>
-      <img mat-card-image [src]="'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/' + getPokemonId(pokemon.url) + '.png'" [alt]="pokemon.name">
+      <img
+        mat-card-image
+        [src]="
+          'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/' +
+          getPokemonId(pokemon.url) +
+          '.png'
+        "
+        [alt]="pokemon.name"
+      />
       <mat-card-actions>
-        <button mat-button color="primary" [routerLink]="['/pokemon', getPokemonId(pokemon.url)]">Detalhes</button>
+        <button mat-button color="primary" [routerLink]="['/pokemon', getPokemonId(pokemon.url)]">
+          Detalhes
+        </button>
       </mat-card-actions>
     </mat-card>
   </div>
 
-  <div class="load-more-section">
-    <button mat-raised-button color="accent" (click)="loadMorePokemon()" [disabled]="isLoadingList()">
-      <mat-icon *ngIf="isLoadingList()">cached</mat-icon>
-      <span *ngIf="!isLoadingList()">Carregar Mais Pokémon</span>
+  <div *ngIf="!isLoadingList() && !listError()" class="navigation-buttons">
+    <button
+      mat-raised-button
+      color="accent"
+      (click)="previousPage()"
+      [disabled]="offset === 0 || isLoadingList()"
+    >
+      <mat-icon>arrow_back</mat-icon>
+    </button>
+
+    <button mat-raised-button color="accent" (click)="nextPage()" [disabled]="isLoadingList()">
+      <mat-icon>arrow_forward</mat-icon>
     </button>
   </div>
 </div>

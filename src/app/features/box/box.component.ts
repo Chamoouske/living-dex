@@ -29,16 +29,23 @@ export class BoxComponent implements OnInit {
   public isLoadingList = this.pokeapiService.isLoadingList;
   public listError = this.pokeapiService.listError;
 
-  private offset = 0;
+  offset = 0;
   private limit = 30;
 
   ngOnInit(): void {
-    this.loadMorePokemon();
+    this.pokeapiService.getPokemonList(this.offset, this.limit);
   }
 
-  loadMorePokemon(): void {
-    this.pokeapiService.getPokemonList(this.offset, this.limit);
+  nextPage(): void {
     this.offset += this.limit;
+    this.pokeapiService.getPokemonList(this.offset, this.limit);
+  }
+
+  previousPage(): void {
+    if (this.offset > 0) {
+      this.offset -= this.limit;
+      this.pokeapiService.getPokemonList(this.offset, this.limit);
+    }
   }
 
   getPokemonId(url: string): string {
