@@ -3,15 +3,18 @@
 
 @include mat.core();
 
+// -- COLOR PALETTES --
 $pokedex-primary: mat.m2-define-palette(mat.$m2-red-palette, 700, 500, 800);
 $pokedex-accent:  mat.m2-define-palette(mat.$m2-light-blue-palette, A200, A100, A400);
 $pokedex-warn:    mat.m2-define-palette(mat.$m2-amber-palette);
 
+// -- TYPOGRAPHY --
 $pokedex-typography: mat.m2-define-typography-config(
   $font-family: 'Roboto, sans-serif',
   $headline-1: mat.m2-define-typography-level(112px, 112px, 300, $letter-spacing: -0.05em),
 );
 
+// -- LIGHT THEME DEFINITION --
 $pokedex-light-theme: mat.m2-define-light-theme((
   color: (
     primary: $pokedex-primary,
@@ -21,6 +24,7 @@ $pokedex-light-theme: mat.m2-define-light-theme((
   typography: $pokedex-typography,
 ));
 
+// -- DARK THEME DEFINITION --
 $pokedex-dark-theme: mat.m2-define-dark-theme((
   color: (
     primary: $pokedex-primary,
@@ -31,25 +35,9 @@ $pokedex-dark-theme: mat.m2-define-dark-theme((
 ));
 
 
+// -- THEME APPLICATION --
 @mixin apply-theme() {
-  @include mat.all-component-themes($pokedex-light-theme);
-  body {
-    background-color: #f5f5f5;
-  }
-  .pokedex-screen {
-    background-color: mat.m2-get-color-from-palette($pokedex-accent, 50);
-    border: 2px solid mat.m2-get-color-from-palette($pokedex-accent);
-  }
-
-  body.dark-theme {
-    @include mat.all-component-themes($pokedex-dark-theme);
-    background-color: #303030;
-    .pokedex-screen {
-      background-color: #424242;
-      border-color: mat.m2-get-color-from-palette($pokedex-accent, 200);
-    }
-  }
-
+  // -- GLOBAL STYLES FOR BOTH THEMES --
   html, body { height: 100%; }
 
   body {
@@ -57,8 +45,39 @@ $pokedex-dark-theme: mat.m2-define-dark-theme((
     font-family: Roboto, "Helvetica Neue", sans-serif;
   }
 
+  // Apply light theme styles by default
+  @include mat.all-component-themes($pokedex-light-theme);
+  body {
+    // CSS Variables for light theme
+    --background-color: #f5f5f5;
+    --text-color: #333333;
+    --primary-text-color: #{mat.m2-get-color-from-palette($pokedex-primary, 900)}; // Darker primary for text
+    background-color: var(--background-color);
+    color: var(--text-color); // Use the CSS variable for default text color
+  }
+  .pokedex-screen {
+    background-color: mat.m2-get-color-from-palette($pokedex-accent, 50);
+    border: 2px solid mat.m2-get-color-from-palette($pokedex-accent);
+  }
+
+  // Apply dark theme styles when the .dark-theme class is on the body
+  body.dark-theme {
+    @include mat.all-component-themes($pokedex-dark-theme);
+    // CSS Variables for dark theme
+    --background-color: #303030;
+    --text-color: #eeeeee;
+    --primary-text-color: #{mat.m2-get-color-from-palette($pokedex-primary, 100)}; // Lighter primary for text
+    background-color: var(--background-color);
+    color: var(--text-color); // Use the CSS variable for default text color
+  }
+  body.dark-theme .pokedex-screen {
+    background-color: #424242;
+    border-color: mat.m2-get-color-from-palette($pokedex-accent, 200);
+  }
+
+  // -- CUSTOM HELPER CLASSES (reusable for both themes) --
   .text-primary {
-    color: mat.m2-get-color-from-palette($pokedex-primary);
+    color: var(--primary-text-color); // Use CSS variable
   }
 
   .text-accent {
