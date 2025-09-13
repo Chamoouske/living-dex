@@ -10,7 +10,7 @@ export const routes: Routes = [
     component: HomeComponent
   },
   {
-    path: 'boxes',
+    path: 'boxes/:boxId',
     loadComponent: () => import('./features/box/box.component').then(m => m.BoxComponent)
   },
   {

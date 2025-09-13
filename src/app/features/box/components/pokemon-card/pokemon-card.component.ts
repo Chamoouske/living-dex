@@ -28,4 +28,12 @@ export class PokemonCardComponent {
     const parts = url?.split('/');
     return parts[parts?.length - 2];
   }
+
+  getPokemonImageUrl(): string {
+    return `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${this.getPokemonId(this.pokemon.url)}.png`;
+  }
+
+  isSearchedPokemon(): boolean {
+    return this.sercheadId === this.getPokemonId(this.pokemon.url);
+  }
 }

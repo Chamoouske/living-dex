@@ -1,12 +1,12 @@
 <div class="box-container">
-  <form>
+  <div>
     <mat-form-field class="example-full-width">
       <mat-label>ID National DEX</mat-label>
       <input matInput type="number" placeholder="Ex. 666" (change)="searchBox($event)" />
     </mat-form-field>
-  </form>
+  </div>
 
-  <h1>Box {{ offset + 1 }} - {{ offset + limit }}</h1>
+  <h1>Box {{ offset() + 1 }} - {{ offset() + limit }}</h1>
 
   <div *ngIf="isLoadingList()" class="loading-spinner">
     <mat-spinner></mat-spinner>
@@ -24,7 +24,7 @@
       mat-raised-button
       color="accent"
       (click)="previousPage()"
-      [disabled]="offset === 0 || isLoadingList()"
+      [disabled]="offset() === 0 || isLoadingList()"
     >
       <mat-icon>arrow_back</mat-icon>
     </button>
@@ -35,7 +35,11 @@
   </div>
 
   <div class="pokemon-grid">
-    <app-pokemon-card *ngFor="let pokemon of pokemonList()" [pokemon]="pokemon" [sercheadId]="idNationalDex"></app-pokemon-card>
+    <app-pokemon-card
+      *ngFor="let pokemon of pokemonList()"
+      [pokemon]="pokemon"
+      [sercheadId]="idNationalDex()"
+    ></app-pokemon-card>
   </div>
 
   <div *ngIf="!isLoadingList() && !listError()" class="navigation-buttons">
@@ -43,7 +47,7 @@
       mat-raised-button
       color="accent"
       (click)="previousPage()"
-      [disabled]="offset === 0 || isLoadingList()"
+      [disabled]="offset() === 0 || isLoadingList()"
     >
       <mat-icon>arrow_back</mat-icon>
     </button>

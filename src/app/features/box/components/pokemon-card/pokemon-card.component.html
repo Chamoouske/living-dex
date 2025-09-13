@@ -1,19 +1,9 @@
-<mat-card
-  class="pokemon-card {{ sercheadId === getPokemonId(this.pokemon.url) ? 'highlighted' : '' }}"
->
+<mat-card class="pokemon-card {{ isSearchedPokemon() ? 'highlighted' : '' }}">
   <mat-card-header>
     <mat-card-title>{{ pokemon.name | titlecase }}</mat-card-title>
     <mat-card-subtitle>#{{ getPokemonId(pokemon.url) }}</mat-card-subtitle>
   </mat-card-header>
-  <img
-    mat-card-image
-    [src]="
-      'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/' +
-      getPokemonId(pokemon.url) +
-      '.png'
-    "
-    [alt]="pokemon.name"
-  />
+  <img mat-card-image [src]="getPokemonImageUrl()" [alt]="pokemon.name" />
   <mat-card-actions>
     <button mat-button color="primary" [routerLink]="['/pokemon', getPokemonId(pokemon.url)]">
       Detalhes
