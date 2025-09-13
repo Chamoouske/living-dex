@@ -6,11 +6,12 @@ export const routes: Routes = [
   {
     path: '',
     pathMatch: 'full',
-    title: 'Home',
+    title: 'Living Dex - Home',
     component: HomeComponent
   },
   {
     path: 'boxes/:boxId',
+    title: 'Living Dex - Box',
     loadComponent: () => import('./features/box/box.component').then(m => m.BoxComponent)
   },
   {
