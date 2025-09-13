@@ -29,7 +29,7 @@ import { RouteLink } from '../../models/route-link.model';
 })
 export class MenuComponent {
   private themeService = inject(ThemeService);
-  public isDarkMode = this.themeService.isDarkMode.asReadonly();
+  public isDarkMode = this.themeService.atualThemeIsDarkMode();
 
   public readonly routes: RouteLink[] = [
     { path: '/', label: 'Página Inicial' },
