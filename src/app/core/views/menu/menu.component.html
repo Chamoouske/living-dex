@@ -1,14 +1,11 @@
 <mat-sidenav-container class="sidenav-container">
   <mat-sidenav #sidenav class="sidenav" mode="over">
     <mat-nav-list>
-      <a
-        *ngFor="let route of routes"
-        mat-list-item
-        [routerLink]="route.path"
-        (click)="sidenav.close()"
-      >
-        {{ route.label }}
-      </a>
+      @for (route of routes; track route.path) {
+        <a mat-list-item [routerLink]="route.path" (click)="sidenav.close()">
+          {{ route.label }}
+        </a>
+      }
     </mat-nav-list>
   </mat-sidenav>
 
@@ -20,9 +17,11 @@
       <span [routerLink]="'/'" class="menu-title">Living Dex</span>
       <span class="spacer"></span>
       <div class="desktop-menu">
-        <a *ngFor="let route of routes" mat-button [routerLink]="route.path">
-          {{ route.label }}
-        </a>
+        @for (route of routes; track route.path) {
+          <a mat-button [routerLink]="route.path" (click)="sidenav.close()">
+            {{ route.label }}
+          </a>
+        }
       </div>
       <mat-slide-toggle [checked]="isDarkMode()" (change)="toggleTheme()" class="theme-toggle">
         <mat-icon>{{ isDarkMode() ? 'dark_mode' : 'light_mode' }}</mat-icon>

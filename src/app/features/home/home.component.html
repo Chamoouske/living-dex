@@ -3,15 +3,11 @@
   <p>Sua plataforma para organizar e acompanhar sua coleção de Pokémon.</p>
 
   <div class="action-buttons">
-    <button
-      *ngFor="let route of routes"
-      mat-flat-button
-      color="primary"
-      mat-button
-      [routerLink]="[route.path]"
-    >
-      {{ route.label }}
-    </button>
+    @for (route of routes; track route.path) {
+      <button mat-flat-button color="primary" mat-button [routerLink]="[route.path]">
+        {{ route.label }}
+      </button>
+    }
   </div>
 
   <p>Explore, organize e complete sua Living Dex!</p>

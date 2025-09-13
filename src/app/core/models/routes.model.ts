@@ -2,6 +2,6 @@ import { RouteLink } from './route-link.model';
 
 export const routes: RouteLink[] = [
   { path: '/', label: 'Página Inicial' },
-  { path: '/boxes/0', label: 'Living Dex' },
+  { path: '/boxes/0', label: 'LivingDex' },
   { path: '/pokedex', label: 'PokeDex' }
 ];
